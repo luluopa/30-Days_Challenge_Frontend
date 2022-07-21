@@ -49,40 +49,64 @@ const AUDIO_DATA_URL = [
 const CONTAINER_DIV = document.querySelector(".container")
 const AUDIO_DIV = document.querySelector(".audio-container")
 
+function setDataKey(element, key){
+    {key ? element.dataset.key = key : null}
+    return element
+}
+
+function createElementWithClass(name, className){
+    let element = document.createElement(name)
+    {className ? element.className = className : null}
+
+    return element
+}
+
+function createAudio(name, className, key, url){
+    let audio = createElementWithClass(name)
+    audio.dataset.key = key
+    audio.src = url
+
+    return audio
+}
+
+async function animationKbdHit(key){
+    let blockDiv_audio = document.querySelector(`div[data-key="${key}"]`)
+
+    blockDiv_audio.classList.add('key_animation')
+    await setTimeout(() => {
+        blockDiv_audio.classList.remove('key_animation')
+    }, 100)
+}
+
 function main(){
-    //construir os objetos
     AUDIO_DATA_URL.forEach((obj_audio) => {
-        //criando obj div
-        let new_tap = document.createElement('div')
-        new_tap.className = "key"
-        new_tap.dataset.key = obj_audio.key
-        let new_kbd = document.createElement('kbd')
-        let span = document.createElement('span')
+        let blockDiv_audio = createElementWithClass('div', 'key')
+        blockDiv_audio = setDataKey(blockDiv_audio, obj_audio.key)
+
+        let kbd = createElementWithClass('kbd')
+        let span = createElementWithClass('span')
+        
         span.innerText = obj_audio.name
-        new_kbd.innerText = String.fromCharCode(obj_audio.key)
+        kbd.innerText = String.fromCharCode(obj_audio.key)
 
-        new_tap.appendChild(new_kbd)
-        new_tap.appendChild(span)
+        blockDiv_audio.appendChild(kbd)
+        blockDiv_audio.appendChild(span)
 
-        let audio = document.createElement('audio')
-        audio.dataset.key = obj_audio.key
-        audio.src = obj_audio.url
+        let audio = createAudio('audio', 'key', obj_audio.key, obj_audio.url)
 
-        new_tap.addEventListener('click', (event) => {
-            let audio = document.querySelector(`audio[data-key="${event.target.dataset.key}"]`)
-            audio.play()
+        blockDiv_audio.addEventListener('click', (event) => {
+            animationKbdHit(event.target.dataset.key)
+            document.querySelector(`audio[data-key="${event.target.dataset.key}"]`).play()
         })
 
-        CONTAINER_DIV.appendChild(new_tap)
+        CONTAINER_DIV.appendChild(blockDiv_audio)
         AUDIO_DIV.appendChild(audio)
     })
 
-    //se o usuario apertar o botao
+    //If the user hits de button
     document.addEventListener('keydown', (event) => {
-        let new_tap = document.querySelector(`div[data-key="${event.keyCode}"]`)
-        let audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
-
-        audio.play()
+        animationKbdHit(event.keyCode)
+        document.querySelector(`audio[data-key="${event.keyCode}"]`).play()
     })
 }
 
