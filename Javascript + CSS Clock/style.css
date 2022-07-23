@@ -60,6 +60,10 @@ body {
     transition: ease-in-out 0.1s;
 }
 
+.tip-negate-transition {
+    transition: none;
+}
+
 #transparent {
     width: 50%;
     height: 100%;
@@ -76,3 +80,14 @@ body {
     transform: rotate(6deg)
 }
 
+.sec {
+    width: 95%;
+}
+
+.min {
+    width: 85%;
+}
+
+.hour {
+    width: 70%;
+}
