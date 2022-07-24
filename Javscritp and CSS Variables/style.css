@@ -1,15 +1,18 @@
-/* :root {
+:root {
     --blur: 1px;
     --space: 1px;
-} */
+    --color: #fff;
+}
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: blue;
     height: 90vh;
+    color: black;
+    font-style: normal;
+    background-color: rgb(92, 77, 221) !important;
 }
 
 .container {
@@ -25,11 +28,22 @@ body {
 }
 
 .options {
-    color: white;
     font-size: xx-large;
     margin-bottom: 50px;
 }
 
 .image {
-    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    background-color: var(--color);
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0.1px black;
+}
+
+img {
+    padding: var(--space);
+    filter: blur(var(--blur));
+
+    border-radius: 10px;
+    transition: all 0.3s;
 }

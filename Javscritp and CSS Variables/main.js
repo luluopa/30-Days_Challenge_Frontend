@@ -1,5 +1,6 @@
 function handleChanges() {
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + 'px')
+    const SUFFIX = this.dataset.type
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + SUFFIX)
 }
 
 function main() {
