@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSS Variables</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="options">
+                <label for="spacing">Spacing</label>
+                <input name="spacing" type="range" class="inputs">
+
+                <label for="blur">Blur</label>
+                <input name="blur" type="range" class="inputs">
+
+                <label for="baseColor">Base Color</label>
+                <input name="baseColor" type="range" class="inputs">
+            </div>
+            <div class="image">
+                <img src="./sp.jpeg" alt="São Paulo" style="width: 600px; height: 300px; backdrop-filter: blur(10px);">
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+/* :root {
+    --blur: 1px;
+    --space: 1px;
+} */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: blue;
+    height: 90vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    min-height: 100%;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.options {
+    color: white;
+    font-size: xx-large;
+    margin-bottom: 50px;
+}
+
+.image {
+    backdrop-filter: blur(10px);
+}
