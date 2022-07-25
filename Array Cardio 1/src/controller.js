@@ -112,26 +112,14 @@ const peopleSortController = async (request, response) => {
 // 8. Reduce Exercise
 // Sum up the instances of each cars
 
-function filterByName(cars, name) {
-    console.log(cars.filter((car) => {car == name}))
-    return cars.filter((car) => {return car === name}).length
-}
-
-function sumUpCars(cars) {
-    let sumUp = new Array()
-    for(car of cars) {
-        sumUp.push({
-            name: car,
-            quantity: filterByName(cars, car)
-        })
-    }
-
-    return sumUp
-}
-
 const sumUpController = async (request, response) => {
     try {
-        const countedCars = await sumUpCars(CARS)
+        // const countedCars = await sumUpCars(CARS)
+        const countedCars = await CARS.reduce((obj, car) => {
+            if(!obj[car]){obj[car] = 0}
+            obj[car]++
+            return obj
+        }, {})
         return response.status(200).json(countedCars)
     }
     catch(error) {
