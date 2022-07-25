@@ -81,7 +81,8 @@ const sortLivedYearsController = async (request, response) => {
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+const names = Array.from(document.querySelectorAll(".mw-content-ltr li"))
+const de = names.filter((li) => {li.textContent.includes('de')}).map((streeName) => {return streeName.textContent})
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
@@ -126,7 +127,6 @@ const sumUpController = async (request, response) => {
         return response.status(500).json(error)
     }
 }
-
 
 module.exports = {
     filterController, firstLastNameController, sortController, reduceController, sortLivedYearsController, peopleSortController, sumUpController
