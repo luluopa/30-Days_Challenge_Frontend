@@ -15,6 +15,10 @@ body {
     background-color: rgb(92, 77, 221) !important;
 }
 
+h1 {
+    font-weight: 100;
+}
+
 .container {
     display: flex;
     flex-direction: column;
