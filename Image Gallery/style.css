@@ -14,6 +14,7 @@ html, body {
 
     width: 100%;
     min-height: 100%;
+    overflow: hidden;
 }
 
 .panel {
@@ -26,9 +27,9 @@ html, body {
     background-size: cover;
     text-align: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 50px;
 
-    transition: 0.7s ease;
+    transition: flex 1s ease, font-size 0.05s ease;
 }
 
 .panel > * {
@@ -45,6 +46,10 @@ html, body {
 .panel > *:last-child {transform: translateY(100%);}
 
 .panel p {
+    text-transform: uppercase;
+    font-family: 'Amatic SC', cursive;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+    font-size: 2em;
     color: white;
 }
 
@@ -65,11 +70,19 @@ html, body {
 }
 
 .panel:hover {
+    transition: font-size 0.01s ease, flex 0.5s ease;
     font-size: 100px;
 }
 
-.panel:hover > *:first-child {transform: translateY(0);}
-.panel:hover > *:last-child {transform: translateY(0);}
+.panel:hover > *:first-child {
+    font-size: 80px;
+    transform: translateY(0);
+}
+
+.panel:hover > *:last-child {
+    font-size: 80px;
+    transform: translateY(0);
+}
 
 .panel1:hover {
     flex: 3;
