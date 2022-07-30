@@ -6,7 +6,9 @@ body {
     background-image: url("background.jpg");
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
+    background-size: cover;
     background-repeat: no-repeat;
+    overflow: hidden;
     height: 100vh;
 }
 
