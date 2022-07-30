@@ -18,8 +18,11 @@ function getMatchedStringUntouched(str, substr) {
     return str.slice(str.toLowerCase().indexOf(substr), str.toLowerCase().indexOf(substr) + substr.length)
 }
 
-function constructCities(data, targetText) {
+function cleanList() {
     document.querySelector(".list-ul").innerHTML = ""
+}
+
+function constructCities(data, targetText) {
     data.forEach((city) => {
         const regex = RegExp(targetText, 'gi')
         const cityName = city.city.replace(regex, `<span class="targets">${getMatchedStringUntouched(city.city, targetText)}</span>`)
@@ -30,20 +33,22 @@ function constructCities(data, targetText) {
 }
 
 function findItens(e, data) {
-    const cities = data.filter((cities) => {
-        //using regex to figure out which city to filter
-        const regex = RegExp(e.target.value, 'gi')
-        return cities.city.toLowerCase().match(regex)
-    })
-
-    constructCities(cities, e.target.value)
+    if(e.target.value !== "") {
+        const cities = data.filter((cities) => {
+            //using regex to figure out which city to filter
+            const regex = RegExp(e.target.value, 'gi')
+            return cities.city.toLowerCase().match(regex)
+        })
+    
+        constructCities(cities, e.target.value)
+    }
 }
 
 async function main() {
     const treatedData = await treatingData()
-    let showData = treatedData.slice(0, PAGE)
     
     document.querySelector("#input-search").addEventListener("input", (e) => {
+        cleanList()
         findItens(e, treatedData)
     })
 }   

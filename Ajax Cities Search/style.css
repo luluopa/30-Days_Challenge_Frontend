@@ -77,6 +77,11 @@ ul {
     margin: 0;
 }
 
-.targets {
+.list-ul > li > span > span {
     background-color: orange;
+}
+
+.list-ul > li > span:last-child {
+    font-size: x-large;
+    color: gray;
 }
