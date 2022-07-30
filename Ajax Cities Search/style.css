@@ -77,7 +77,6 @@ ul {
     margin: 0;
 }
 
-.pop {
-    color: gray;
-    font-size: x-large;
+.targets {
+    background-color: orange;
 }
